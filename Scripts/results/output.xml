@@ -1,0 +1,2195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.10.12 on linux)" generated="2024-11-07T08:35:21.983986" rpa="false" schemaversion="5">
+<suite id="s1" name="PasswordGenerator" source="/home/huyphu/Password-Generator/Scripts/PasswordGenerator.robot">
+<test id="s1-t1" name="Test different combinations of password requirements" line="83">
+<kw name="Start Web Test" owner="setup" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:22.173791" level="INFO">Opening browser 'chrome' to base url 'https://www.security.org/'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-11-07T08:35:22.173507" elapsed="1.845895"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-11-07T08:35:24.019740" elapsed="0.058269"/>
+</kw>
+<doc>Test setup: Navigate to homepage on a specified website</doc>
+<status status="PASS" start="2024-11-07T08:35:22.172391" elapsed="1.905806"/>
+</kw>
+<kw name="Navigate to Password Generator page" owner="pom_PasswordGenerator">
+<kw name="Catenate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:24.079291" level="INFO">${password_generator_url} = https://www.security.org//password-generator</msg>
+<var>${password_generator_url}</var>
+<arg>SEPARATOR=/</arg>
+<arg>${URL}</arg>
+<arg>password-generator</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<status status="PASS" start="2024-11-07T08:35:24.078969" elapsed="0.000364"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:24.079713" level="INFO">Opening url 'https://www.security.org//password-generator'</msg>
+<arg>${password_generator_url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2024-11-07T08:35:24.079520" elapsed="1.957231"/>
+</kw>
+<kw name="Verify Password Generator page loaded" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_h2_customize_your_password}</arg>
+<arg>${WAIT}</arg>
+<arg>"Customize your password" header is not visible</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.038305" elapsed="0.037242"/>
+</kw>
+<kw name="Check password against default requirements" owner="pom_PasswordGenerator">
+<kw name="Retrieve generated password" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_input_display_password}</arg>
+<arg>${WAIT}</arg>
+<arg>The input field displaying password is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.076642" elapsed="0.020131"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.110706" level="INFO">${GENERATED_PASSWORD} = uTGTky</msg>
+<var>${GENERATED_PASSWORD}</var>
+<arg>${loc_input_display_password}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.097042" elapsed="0.013736"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.111393" level="INFO">${GENERATED_PASSWORD} = uTGTky</msg>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.111036" elapsed="0.000417"/>
+</kw>
+<doc>Retrieve the generated passwords displayed on the website</doc>
+<status status="PASS" start="2024-11-07T08:35:26.076254" elapsed="0.035294"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.111874" level="INFO">Length is 6.</msg>
+<msg time="2024-11-07T08:35:26.111968" level="INFO">${password_length} = 6</msg>
+<var>${password_length}</var>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.111703" elapsed="0.000295"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.112332" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${password_length}</arg>
+<arg>6</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.112155" elapsed="0.000251"/>
+</kw>
+<kw name="Check if password meets requirement" owner="pom_PasswordGenerator">
+<kw name="Check password length against the requirement" owner="pom_PasswordGenerator">
+<kw name="Retrieve generated password" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_input_display_password}</arg>
+<arg>${WAIT}</arg>
+<arg>The input field displaying password is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.113625" elapsed="0.013092"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.136604" level="INFO">${GENERATED_PASSWORD} = uTGTky</msg>
+<var>${GENERATED_PASSWORD}</var>
+<arg>${loc_input_display_password}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.126982" elapsed="0.009676"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.137391" level="INFO">${GENERATED_PASSWORD} = uTGTky</msg>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.136916" elapsed="0.000547"/>
+</kw>
+<doc>Retrieve the generated passwords displayed on the website</doc>
+<status status="PASS" start="2024-11-07T08:35:26.113350" elapsed="0.024231"/>
+</kw>
+<kw name="Get password length requirement" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_bar_password_length}</arg>
+<arg>${WAIT}</arg>
+<arg>The password length field is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.138462" elapsed="0.015326"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.165632" level="INFO">${REQ_PASSWORD_LENGTH} = 6</msg>
+<var>${REQ_PASSWORD_LENGTH}</var>
+<arg>${loc_bar_password_length}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.154071" elapsed="0.011618"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.166309" level="INFO">${REQ_PASSWORD_LENGTH} = 6</msg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.165935" elapsed="0.000433"/>
+</kw>
+<doc>Retrieve the password length set by users to make sure the generated passwords meet the requirments.
+Store the new length in the global variable 6 for easy access</doc>
+<status status="PASS" start="2024-11-07T08:35:26.137876" elapsed="0.028585"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.166794" level="INFO">Length is 6.</msg>
+<msg time="2024-11-07T08:35:26.166892" level="INFO">${generated_password_length} = 6</msg>
+<var>${generated_password_length}</var>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.166623" elapsed="0.000299"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.167292" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${generated_password_length}</arg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.167075" elapsed="0.000293"/>
+</kw>
+<doc>Test the passwords' lengths and make sure they meet requirements
+Arguments: input_length= value set by users</doc>
+<status status="PASS" start="2024-11-07T08:35:26.113038" elapsed="0.054422"/>
+</kw>
+<kw name="Check if password has" owner="pom_PasswordGenerator">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.168418" level="INFO">${isOption} = True</msg>
+<var>${isOption}</var>
+<arg>${REQUIREMENTS}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.168145" elapsed="0.000310"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.168742" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${isOption}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.168634" elapsed="0.000189"/>
+</kw>
+<msg time="2024-11-07T08:35:26.169003" level="INFO">${isOption} = True</msg>
+<var>${isOption}</var>
+<arg>${option}</arg>
+<doc>check password against the provided requirement</doc>
+<status status="PASS" start="2024-11-07T08:35:26.167747" elapsed="0.001288"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.169468" level="INFO">${regex_option} = [a-z]</msg>
+<var>${regex_option}</var>
+<arg>${REGEX}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.169204" elapsed="0.000298"/>
+</kw>
+<if>
+<branch type="IF" condition="${isOption}">
+<kw name="Should Match Regexp" owner="BuiltIn">
+<arg>${GENERATED_PASSWORD}</arg>
+<arg>${regex_option}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.170040" elapsed="0.000390"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.169761" elapsed="0.000763"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Not Match Regexp" owner="BuiltIn">
+<arg>${GENERATED_PASSWORD}</arg>
+<arg>${regex_option}</arg>
+<doc>Fails if ``string`` matches ``pattern`` as a regular expression.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.170783" elapsed="0.000059"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.170581" elapsed="0.000348"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.169601" elapsed="0.001382"/>
+</if>
+<arg>Lowercase</arg>
+<doc>check password against the provided requirement. This includes length and whatever requirement set by users
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="PASS" start="2024-11-07T08:35:26.112683" elapsed="0.058402"/>
+</kw>
+<kw name="Check if password meets requirement" owner="pom_PasswordGenerator">
+<kw name="Check password length against the requirement" owner="pom_PasswordGenerator">
+<kw name="Retrieve generated password" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_input_display_password}</arg>
+<arg>${WAIT}</arg>
+<arg>The input field displaying password is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.173275" elapsed="0.018294"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.201292" level="INFO">${GENERATED_PASSWORD} = uTGTky</msg>
+<var>${GENERATED_PASSWORD}</var>
+<arg>${loc_input_display_password}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.191833" elapsed="0.009514"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.201938" level="INFO">${GENERATED_PASSWORD} = uTGTky</msg>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.201586" elapsed="0.000409"/>
+</kw>
+<doc>Retrieve the generated passwords displayed on the website</doc>
+<status status="PASS" start="2024-11-07T08:35:26.172713" elapsed="0.029373"/>
+</kw>
+<kw name="Get password length requirement" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_bar_password_length}</arg>
+<arg>${WAIT}</arg>
+<arg>The password length field is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.202632" elapsed="0.013240"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.226300" level="INFO">${REQ_PASSWORD_LENGTH} = 6</msg>
+<var>${REQ_PASSWORD_LENGTH}</var>
+<arg>${loc_bar_password_length}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.216153" elapsed="0.010203"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.226954" level="INFO">${REQ_PASSWORD_LENGTH} = 6</msg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.226598" elapsed="0.000413"/>
+</kw>
+<doc>Retrieve the password length set by users to make sure the generated passwords meet the requirments.
+Store the new length in the global variable 6 for easy access</doc>
+<status status="PASS" start="2024-11-07T08:35:26.202337" elapsed="0.024777"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.227514" level="INFO">Length is 6.</msg>
+<msg time="2024-11-07T08:35:26.227610" level="INFO">${generated_password_length} = 6</msg>
+<var>${generated_password_length}</var>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.227337" elapsed="0.000303"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.227993" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${generated_password_length}</arg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.227790" elapsed="0.000282"/>
+</kw>
+<doc>Test the passwords' lengths and make sure they meet requirements
+Arguments: input_length= value set by users</doc>
+<status status="PASS" start="2024-11-07T08:35:26.172086" elapsed="0.056086"/>
+</kw>
+<kw name="Check if password has" owner="pom_PasswordGenerator">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.228935" level="INFO">${isOption} = True</msg>
+<var>${isOption}</var>
+<arg>${REQUIREMENTS}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.228697" elapsed="0.000271"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.229247" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${isOption}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.229148" elapsed="0.000165"/>
+</kw>
+<msg time="2024-11-07T08:35:26.229478" level="INFO">${isOption} = True</msg>
+<var>${isOption}</var>
+<arg>${option}</arg>
+<doc>check password against the provided requirement</doc>
+<status status="PASS" start="2024-11-07T08:35:26.228359" elapsed="0.001150"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.229897" level="INFO">${regex_option} = [A-Z]</msg>
+<var>${regex_option}</var>
+<arg>${REGEX}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.229657" elapsed="0.000273"/>
+</kw>
+<if>
+<branch type="IF" condition="${isOption}">
+<kw name="Should Match Regexp" owner="BuiltIn">
+<arg>${GENERATED_PASSWORD}</arg>
+<arg>${regex_option}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.230291" elapsed="0.000305"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.230048" elapsed="0.000664"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Not Match Regexp" owner="BuiltIn">
+<arg>${GENERATED_PASSWORD}</arg>
+<arg>${regex_option}</arg>
+<doc>Fails if ``string`` matches ``pattern`` as a regular expression.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.230894" elapsed="0.000035"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.230761" elapsed="0.000223"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.230020" elapsed="0.001002"/>
+</if>
+<arg>Uppercase</arg>
+<doc>check password against the provided requirement. This includes length and whatever requirement set by users
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="PASS" start="2024-11-07T08:35:26.171430" elapsed="0.059653"/>
+</kw>
+<doc>Check if password meets the default requirement when first landing on the page
+Requirements: Length =6; isLowercase, isUppsercase</doc>
+<status status="PASS" start="2024-11-07T08:35:26.075869" elapsed="0.155303"/>
+</kw>
+<doc>Verify the Password Generator page successfully loaded by making sure the "Customize your password" header is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.037342" elapsed="0.193901"/>
+</kw>
+<doc>Navigate to the Password Generator page</doc>
+<status status="PASS" start="2024-11-07T08:35:24.078571" elapsed="2.152740"/>
+</kw>
+<kw name="Generate requirements combinations" owner="pom_PasswordGenerator">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.232306" level="INFO">@{all_combinations} = [ ('True', 'True', 'True', 'True') | ('True', 'True', 'True', 'False') | ('True', 'True', 'False', 'True') | ('True', 'True', 'False', 'False') | ('True', 'False', 'True', 'True') | ('True', 'False', ...</msg>
+<var>@{all_combinations}</var>
+<arg>itertools.product(['True','False'], repeat =4)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.231954" elapsed="0.000392"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.232923" level="INFO">('True', 'True', 'True', 'True')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.232758" elapsed="0.000225"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.233587" level="INFO">${requirement} = {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'True'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.233139" elapsed="0.000485"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.233781" elapsed="0.000209"/>
+</kw>
+<var name="${combo}">('True', 'True', 'True', 'True')</var>
+<status status="PASS" start="2024-11-07T08:35:26.232630" elapsed="0.001424"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.234484" level="INFO">('True', 'True', 'True', 'False')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.234317" elapsed="0.000224"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.234978" level="INFO">${requirement} = {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'False'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.234691" elapsed="0.000321"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.235169" elapsed="0.000199"/>
+</kw>
+<var name="${combo}">('True', 'True', 'True', 'False')</var>
+<status status="PASS" start="2024-11-07T08:35:26.234196" elapsed="0.001235"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.235819" level="INFO">('True', 'True', 'False', 'True')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.235668" elapsed="0.000205"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.236284" level="INFO">${requirement} = {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'True'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.236016" elapsed="0.000302"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.236465" elapsed="0.000212"/>
+</kw>
+<var name="${combo}">('True', 'True', 'False', 'True')</var>
+<status status="PASS" start="2024-11-07T08:35:26.235554" elapsed="0.001190"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.237464" level="INFO">('True', 'True', 'False', 'False')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.237173" elapsed="0.000369"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.238399" level="INFO">${requirement} = {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'False'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.237813" elapsed="0.000652"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.238803" elapsed="0.000493"/>
+</kw>
+<var name="${combo}">('True', 'True', 'False', 'False')</var>
+<status status="PASS" start="2024-11-07T08:35:26.236930" elapsed="0.002498"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.240372" level="INFO">('True', 'False', 'True', 'True')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.239955" elapsed="0.000562"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.241361" level="INFO">${requirement} = {'Lowercase': 'True', 'Uppercase': 'False', 'Numbers': 'True', 'Symbols': 'True'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.240858" elapsed="0.000558"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.241685" elapsed="0.000374"/>
+</kw>
+<var name="${combo}">('True', 'False', 'True', 'True')</var>
+<status status="PASS" start="2024-11-07T08:35:26.239688" elapsed="0.002489"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.242856" level="INFO">('True', 'False', 'True', 'False')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.242605" elapsed="0.000347"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.243739" level="INFO">${requirement} = {'Lowercase': 'True', 'Uppercase': 'False', 'Numbers': 'True', 'Symbols': 'False'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.243273" elapsed="0.000522"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.244034" elapsed="0.000314"/>
+</kw>
+<var name="${combo}">('True', 'False', 'True', 'False')</var>
+<status status="PASS" start="2024-11-07T08:35:26.242391" elapsed="0.002057"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.245080" level="INFO">('True', 'False', 'False', 'True')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.244841" elapsed="0.000330"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.245803" level="INFO">${requirement} = {'Lowercase': 'True', 'Uppercase': 'False', 'Numbers': 'False', 'Symbols': 'True'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.245401" elapsed="0.000455"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.246079" elapsed="0.000315"/>
+</kw>
+<var name="${combo}">('True', 'False', 'False', 'True')</var>
+<status status="PASS" start="2024-11-07T08:35:26.244658" elapsed="0.001827"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.247118" level="INFO">('True', 'False', 'False', 'False')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.246858" elapsed="0.000353"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.247952" level="INFO">${requirement} = {'Lowercase': 'True', 'Uppercase': 'False', 'Numbers': 'False', 'Symbols': 'False'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.247463" elapsed="0.000548"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.248312" elapsed="0.000358"/>
+</kw>
+<var name="${combo}">('True', 'False', 'False', 'False')</var>
+<status status="PASS" start="2024-11-07T08:35:26.246676" elapsed="0.002094"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.249441" level="INFO">('False', 'True', 'True', 'True')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.249189" elapsed="0.000339"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.250199" level="INFO">${requirement} = {'Lowercase': 'False', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'True'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.249757" elapsed="0.000500"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.250508" elapsed="0.000296"/>
+</kw>
+<var name="${combo}">('False', 'True', 'True', 'True')</var>
+<status status="PASS" start="2024-11-07T08:35:26.248984" elapsed="0.001895"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.251438" level="INFO">('False', 'True', 'True', 'False')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.251198" elapsed="0.000302"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.251954" level="INFO">${requirement} = {'Lowercase': 'False', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'False'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.251662" elapsed="0.000327"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.252149" elapsed="0.000208"/>
+</kw>
+<var name="${combo}">('False', 'True', 'True', 'False')</var>
+<status status="PASS" start="2024-11-07T08:35:26.251031" elapsed="0.001391"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.252840" level="INFO">('False', 'True', 'False', 'True')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.252677" elapsed="0.000220"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.253328" level="INFO">${requirement} = {'Lowercase': 'False', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'True'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.253046" elapsed="0.000317"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.253522" elapsed="0.000226"/>
+</kw>
+<var name="${combo}">('False', 'True', 'False', 'True')</var>
+<status status="PASS" start="2024-11-07T08:35:26.252557" elapsed="0.001261"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.254568" level="INFO">('False', 'True', 'False', 'False')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.254132" elapsed="0.000534"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.255302" level="INFO">${requirement} = {'Lowercase': 'False', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'False'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.254913" elapsed="0.000430"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.255544" elapsed="0.000239"/>
+</kw>
+<var name="${combo}">('False', 'True', 'False', 'False')</var>
+<status status="PASS" start="2024-11-07T08:35:26.253972" elapsed="0.001879"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.256354" level="INFO">('False', 'False', 'True', 'True')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.256162" elapsed="0.000255"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.257406" level="INFO">${requirement} = {'Lowercase': 'False', 'Uppercase': 'False', 'Numbers': 'True', 'Symbols': 'True'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.256657" elapsed="0.000936"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.257975" elapsed="0.000462"/>
+</kw>
+<var name="${combo}">('False', 'False', 'True', 'True')</var>
+<status status="PASS" start="2024-11-07T08:35:26.256005" elapsed="0.002551"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.259309" level="INFO">('False', 'False', 'True', 'False')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.258989" elapsed="0.000396"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.259965" level="INFO">${requirement} = {'Lowercase': 'False', 'Uppercase': 'False', 'Numbers': 'True', 'Symbols': 'False'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.259612" elapsed="0.000391"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.260197" elapsed="0.000227"/>
+</kw>
+<var name="${combo}">('False', 'False', 'True', 'False')</var>
+<status status="PASS" start="2024-11-07T08:35:26.258766" elapsed="0.001727"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.260955" level="INFO">('False', 'False', 'False', 'True')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.260780" elapsed="0.000237"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.261498" level="INFO">${requirement} = {'Lowercase': 'False', 'Uppercase': 'False', 'Numbers': 'False', 'Symbols': 'True'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.261198" elapsed="0.000335"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.261687" elapsed="0.000208"/>
+</kw>
+<var name="${combo}">('False', 'False', 'False', 'True')</var>
+<status status="PASS" start="2024-11-07T08:35:26.260650" elapsed="0.001310"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.262455" level="INFO">('False', 'False', 'False', 'False')</msg>
+<arg>${combo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.262245" elapsed="0.000268"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.262937" level="INFO">${requirement} = {'Lowercase': 'False', 'Uppercase': 'False', 'Numbers': 'False', 'Symbols': 'False'}</msg>
+<var>${requirement}</var>
+<arg>dict(zip(["Lowercase","Uppercase","Numbers","Symbols"],${combo}))</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.262666" elapsed="0.000306"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${requirement}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.263131" elapsed="0.000208"/>
+</kw>
+<var name="${combo}">('False', 'False', 'False', 'False')</var>
+<status status="PASS" start="2024-11-07T08:35:26.262094" elapsed="0.001310"/>
+</iter>
+<var>${combo}</var>
+<value>@{all_combinations}</value>
+<status status="PASS" start="2024-11-07T08:35:26.232437" elapsed="0.031020"/>
+</for>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.263803" level="INFO">[{'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'True'}, {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'False'}, {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'True'}, {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'False'}, {'Lowercase': 'True', 'Uppercase': 'False', 'Numbers': 'True', 'Symbols': 'True'}, {'Lowercase': 'True', 'Uppercase': 'False', 'Numbers': 'True', 'Symbols': 'False'}, {'Lowercase': 'True', 'Uppercase': 'False', 'Numbers': 'False', 'Symbols': 'True'}, {'Lowercase': 'True', 'Uppercase': 'False', 'Numbers': 'False', 'Symbols': 'False'}, {'Lowercase': 'False', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'True'}, {'Lowercase': 'False', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'False'}, {'Lowercase': 'False', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'True'}, {'Lowercase': 'False', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'False'}, {'Lowercase': 'False', 'Uppercase': 'False', 'Numbers': 'True', 'Symbols': 'True'}, {'Lowercase': 'False', 'Uppercase': 'False', 'Numbers': 'True', 'Symbols': 'False'}, {'Lowercase': 'False', 'Uppercase': 'False', 'Numbers': 'False', 'Symbols': 'True'}, {'Lowercase': 'False', 'Uppercase': 'False', 'Numbers': 'False', 'Symbols': 'False'}]</msg>
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.263616" elapsed="0.000252"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.264325" level="INFO">${REQUIREMENTS_COMBINATION} = [{'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'True'}, {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'False'}, {'Lowercase': 'True', 'Uppercase':...</msg>
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.264025" elapsed="0.000357"/>
+</kw>
+<doc>Generate all possible requirements for the passwords and store them in the global variable []</doc>
+<status status="PASS" start="2024-11-07T08:35:26.231658" elapsed="0.032815"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Set random password requirements" owner="pom_PasswordGenerator">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.265686" level="INFO">${random_index} = 2</msg>
+<var>${random_index}</var>
+<arg>random.randrange(0, 15)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.265409" elapsed="0.000313"/>
+</kw>
+<kw name="Get From List" owner="Collections">
+<msg time="2024-11-07T08:35:26.266132" level="INFO">${requirements} = {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'True'}</msg>
+<var>${requirements}</var>
+<arg>${REQUIREMENTS_COMBINATION}</arg>
+<arg>${random_index}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.265878" elapsed="0.000290"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.266798" level="INFO">Lowercase</msg>
+<arg>${key}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.266633" elapsed="0.000225"/>
+</kw>
+<if>
+<branch type="IF" condition="'${requirements}[${key}]' == '${True}'">
+<kw name="Set requirement" owner="pom_PasswordGenerator">
+<kw name="Check if password has" owner="pom_PasswordGenerator">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.269101" level="INFO">${isOption} = True</msg>
+<var>${isOption}</var>
+<arg>${REQUIREMENTS}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.268858" elapsed="0.000329"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.269459" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${isOption}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.269359" elapsed="0.000163"/>
+</kw>
+<msg time="2024-11-07T08:35:26.269696" level="INFO">${isRequirementSet} = True</msg>
+<var>${isRequirementSet}</var>
+<arg>${option}</arg>
+<doc>check password against the provided requirement</doc>
+<status status="PASS" start="2024-11-07T08:35:26.268538" elapsed="0.001189"/>
+</kw>
+<if>
+<branch type="IF" condition="${isRequirementSet} == False">
+<if>
+<branch type="IF" condition="'${option}' == 'Lowercase'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_lower_case}</arg>
+<arg>${WAIT}</arg>
+<arg>The Lowercase checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.270127" elapsed="0.000037"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_lower_case}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.270333" elapsed="0.000052"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Lowercase</arg>
+<arg>True</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.270578" elapsed="0.000040"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.269982" elapsed="0.000700"/>
+</branch>
+<branch type="ELSE IF" condition="'${option}' == 'Uppercase'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_upper_case}</arg>
+<arg>${WAIT}</arg>
+<arg>The Uppercase checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.270917" elapsed="0.000037"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_upper_case}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.271164" elapsed="0.000052"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Uppercase</arg>
+<arg>True</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.271423" elapsed="0.000045"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.270753" elapsed="0.000797"/>
+</branch>
+<branch type="ELSE IF" condition="'${option}' == 'Numbers'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_numbers}</arg>
+<arg>${WAIT}</arg>
+<arg>The Numbers checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.271798" elapsed="0.000039"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_numbers}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.272024" elapsed="0.000038"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Numbers</arg>
+<arg>True</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.272227" elapsed="0.000039"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.271612" elapsed="0.000748"/>
+</branch>
+<branch type="ELSE IF" condition="'${option}' == 'Symbols'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_symbols}</arg>
+<arg>${WAIT}</arg>
+<arg>The Symbols checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.272630" elapsed="0.000037"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_symbols}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.272864" elapsed="0.000055"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Symbols</arg>
+<arg>True</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.273135" elapsed="0.000044"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.272437" elapsed="0.000807"/>
+</branch>
+<status status="NOT RUN" start="2024-11-07T08:35:26.269965" elapsed="0.003332"/>
+</if>
+<status status="NOT RUN" start="2024-11-07T08:35:26.269825" elapsed="0.003507"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.273842" level="INFO">Requirement Lowercase has been already set</msg>
+<arg>Requirement ${option} has been already set</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.273559" elapsed="0.000394"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.273372" elapsed="0.000655"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.269803" elapsed="0.004287"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.274592" level="INFO">REQUIREMENT: {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'False'}</msg>
+<arg>REQUIREMENT: ${REQUIREMENTS}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.274334" elapsed="0.000327"/>
+</kw>
+<arg>${key}</arg>
+<doc>Check box of the selected option
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="PASS" start="2024-11-07T08:35:26.268158" elapsed="0.006625"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.266957" elapsed="0.007918"/>
+</branch>
+<branch type="ELSE">
+<kw name="Unset requirement" owner="pom_PasswordGenerator">
+<arg>${key}</arg>
+<doc>Check box of the selected option
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.275362" elapsed="0.000048"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.274933" elapsed="0.000537"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.266937" elapsed="0.008576"/>
+</if>
+<var name="${key}">Lowercase</var>
+<status status="PASS" start="2024-11-07T08:35:26.266506" elapsed="0.009040"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.276146" level="INFO">Uppercase</msg>
+<arg>${key}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.275926" elapsed="0.000289"/>
+</kw>
+<if>
+<branch type="IF" condition="'${requirements}[${key}]' == '${True}'">
+<kw name="Set requirement" owner="pom_PasswordGenerator">
+<kw name="Check if password has" owner="pom_PasswordGenerator">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.278045" level="INFO">${isOption} = True</msg>
+<var>${isOption}</var>
+<arg>${REQUIREMENTS}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.277768" elapsed="0.000317"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.278383" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${isOption}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.278277" elapsed="0.000171"/>
+</kw>
+<msg time="2024-11-07T08:35:26.278628" level="INFO">${isRequirementSet} = True</msg>
+<var>${isRequirementSet}</var>
+<arg>${option}</arg>
+<doc>check password against the provided requirement</doc>
+<status status="PASS" start="2024-11-07T08:35:26.277352" elapsed="0.001308"/>
+</kw>
+<if>
+<branch type="IF" condition="${isRequirementSet} == False">
+<if>
+<branch type="IF" condition="'${option}' == 'Lowercase'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_lower_case}</arg>
+<arg>${WAIT}</arg>
+<arg>The Lowercase checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.279140" elapsed="0.000036"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_lower_case}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.279325" elapsed="0.000033"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Lowercase</arg>
+<arg>True</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.279491" elapsed="0.000032"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.278991" elapsed="0.000588"/>
+</branch>
+<branch type="ELSE IF" condition="'${option}' == 'Uppercase'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_upper_case}</arg>
+<arg>${WAIT}</arg>
+<arg>The Uppercase checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.279753" elapsed="0.000034"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_upper_case}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.279939" elapsed="0.000033"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Uppercase</arg>
+<arg>True</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.280153" elapsed="0.000038"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.279625" elapsed="0.000625"/>
+</branch>
+<branch type="ELSE IF" condition="'${option}' == 'Numbers'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_numbers}</arg>
+<arg>${WAIT}</arg>
+<arg>The Numbers checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.280430" elapsed="0.000033"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_numbers}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.280897" elapsed="0.000058"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Numbers</arg>
+<arg>True</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.281168" elapsed="0.000042"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.280296" elapsed="0.000977"/>
+</branch>
+<branch type="ELSE IF" condition="'${option}' == 'Symbols'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_symbols}</arg>
+<arg>${WAIT}</arg>
+<arg>The Symbols checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.281459" elapsed="0.000035"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_symbols}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.281650" elapsed="0.000034"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Symbols</arg>
+<arg>True</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.281814" elapsed="0.000032"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.281319" elapsed="0.000581"/>
+</branch>
+<status status="NOT RUN" start="2024-11-07T08:35:26.278973" elapsed="0.002968"/>
+</if>
+<status status="NOT RUN" start="2024-11-07T08:35:26.278822" elapsed="0.003150"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.282364" level="INFO">Requirement Uppercase has been already set</msg>
+<arg>Requirement ${option} has been already set</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.282137" elapsed="0.000292"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.282008" elapsed="0.000477"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.278798" elapsed="0.003726"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.282826" level="INFO">REQUIREMENT: {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'False'}</msg>
+<arg>REQUIREMENT: ${REQUIREMENTS}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.282643" elapsed="0.000241"/>
+</kw>
+<arg>${key}</arg>
+<doc>Check box of the selected option
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="PASS" start="2024-11-07T08:35:26.276855" elapsed="0.006118"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.276325" elapsed="0.006703"/>
+</branch>
+<branch type="ELSE">
+<kw name="Unset requirement" owner="pom_PasswordGenerator">
+<arg>${key}</arg>
+<doc>Check box of the selected option
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.283427" elapsed="0.000044"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.283070" elapsed="0.000457"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.276302" elapsed="0.007265"/>
+</if>
+<var name="${key}">Uppercase</var>
+<status status="PASS" start="2024-11-07T08:35:26.275768" elapsed="0.007827"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.284048" level="INFO">Numbers</msg>
+<arg>${key}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.283887" elapsed="0.000222"/>
+</kw>
+<if>
+<branch type="IF" condition="'${requirements}[${key}]' == '${True}'">
+<kw name="Set requirement" owner="pom_PasswordGenerator">
+<arg>${key}</arg>
+<doc>Check box of the selected option
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.284750" elapsed="0.000042"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.284226" elapsed="0.000622"/>
+</branch>
+<branch type="ELSE">
+<kw name="Unset requirement" owner="pom_PasswordGenerator">
+<kw name="Check if password has" owner="pom_PasswordGenerator">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.286149" level="INFO">${isOption} = False</msg>
+<var>${isOption}</var>
+<arg>${REQUIREMENTS}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.285901" elapsed="0.000284"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.286443" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${isOption}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.286346" elapsed="0.000160"/>
+</kw>
+<msg time="2024-11-07T08:35:26.286674" level="INFO">${isRequirementSet} = False</msg>
+<var>${isRequirementSet}</var>
+<arg>${option}</arg>
+<doc>check password against the provided requirement</doc>
+<status status="PASS" start="2024-11-07T08:35:26.285579" elapsed="0.001126"/>
+</kw>
+<kw name="Check for unselect conditions" owner="pom_PasswordGenerator">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.287935" level="INFO">${number_of_Trues} = 0</msg>
+<var>${number_of_Trues}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.287678" elapsed="0.000299"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.289714" level="INFO">Checking values of True</msg>
+<arg>Checking values of ${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.289381" elapsed="0.000422"/>
+</kw>
+<if>
+<branch type="IF" condition="${value} == ${True}">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.290662" level="INFO">${number_of_Trues} = 0+1</msg>
+<var>${number_of_Trues}</var>
+<arg>${number_of_Trues}+1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.290355" elapsed="0.000347"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.289956" elapsed="0.000820"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.289928" elapsed="0.000905"/>
+</if>
+<var name="${value}">True</var>
+<status status="PASS" start="2024-11-07T08:35:26.289096" elapsed="0.001768"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.291469" level="INFO">Checking values of True</msg>
+<arg>Checking values of ${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.291240" elapsed="0.000299"/>
+</kw>
+<if>
+<branch type="IF" condition="${value} == ${True}">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.292628" level="INFO">${number_of_Trues} = 0+1+1</msg>
+<var>${number_of_Trues}</var>
+<arg>${number_of_Trues}+1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.291968" elapsed="0.000734"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.291662" elapsed="0.001172"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.291637" elapsed="0.001286"/>
+</if>
+<var name="${value}">True</var>
+<status status="PASS" start="2024-11-07T08:35:26.291055" elapsed="0.001938"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.293644" level="INFO">Checking values of False</msg>
+<arg>Checking values of ${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.293416" elapsed="0.000295"/>
+</kw>
+<if>
+<branch type="IF" condition="${value} == ${True}">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${number_of_Trues}</var>
+<arg>${number_of_Trues}+1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.294100" elapsed="0.000062"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.293820" elapsed="0.000423"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.293798" elapsed="0.000493"/>
+</if>
+<var name="${value}">False</var>
+<status status="PASS" start="2024-11-07T08:35:26.293238" elapsed="0.001090"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.294867" level="INFO">Checking values of False</msg>
+<arg>Checking values of ${value}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.294661" elapsed="0.000269"/>
+</kw>
+<if>
+<branch type="IF" condition="${value} == ${True}">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${number_of_Trues}</var>
+<arg>${number_of_Trues}+1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.295290" elapsed="0.000036"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.295030" elapsed="0.000354"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.295010" elapsed="0.000417"/>
+</if>
+<var name="${value}">False</var>
+<status status="PASS" start="2024-11-07T08:35:26.294523" elapsed="0.000931"/>
+</iter>
+<var>${value}</var>
+<value>@{REQUIREMENTS.values()}</value>
+<status status="PASS" start="2024-11-07T08:35:26.288185" elapsed="0.007317"/>
+</for>
+<if>
+<branch type="IF" condition="${number_of_Trues} &gt;= 2">
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.295917" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>True</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.295811" elapsed="0.000172"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.295595" elapsed="0.000447"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>False</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.296257" elapsed="0.000062"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.296083" elapsed="0.000303"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.295577" elapsed="0.000853"/>
+</if>
+<kw name="Return From Keyword" owner="BuiltIn">
+<arg>${number_of_Trues} &gt;= 2</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.296552" elapsed="0.000033"/>
+</kw>
+<msg time="2024-11-07T08:35:26.296725" level="INFO">${canUnselect} = True</msg>
+<var>${canUnselect}</var>
+<doc>This is to make sure at least one requirement is always selected
+Return True if {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'False'} dictionary has at least 2 keys whose values are True, meaning we can remove a requirement
+Return False if {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'False'} dictionary has less than 2 keys whose values are True, meaning we can not remove any requirement</doc>
+<status status="PASS" start="2024-11-07T08:35:26.287196" elapsed="0.009560"/>
+</kw>
+<if>
+<branch type="IF" condition="'${canUnselect} and ${isRequirementSet}'">
+<if>
+<branch type="IF" condition="'${option}' == 'Lowercase'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_lower_case}</arg>
+<arg>${WAIT}</arg>
+<arg>The Lowercase checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.297230" elapsed="0.000037"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_lower_case}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.297422" elapsed="0.000035"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Lowercase</arg>
+<arg>False</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.297588" elapsed="0.000032"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.297022" elapsed="0.000653"/>
+</branch>
+<branch type="ELSE IF" condition="'${option}' == 'Uppercase'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_upper_case}</arg>
+<arg>${WAIT}</arg>
+<arg>The Uppercase checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.297942" elapsed="0.000034"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_upper_case}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.298125" elapsed="0.000033"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Uppercase</arg>
+<arg>False</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.298288" elapsed="0.000031"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.297724" elapsed="0.000649"/>
+</branch>
+<branch type="ELSE IF" condition="'${option}' == 'Numbers'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_numbers}</arg>
+<arg>${WAIT}</arg>
+<arg>The Numbers checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.298617" elapsed="0.019750"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.319061" level="INFO">Clicking element 'xpath=//label[@for="option-numbers"]'.</msg>
+<arg>${loc_checkbox_has_numbers}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.318735" elapsed="0.066148"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Numbers</arg>
+<arg>False</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.385153" elapsed="0.000257"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.298414" elapsed="0.087068"/>
+</branch>
+<branch type="ELSE IF" condition="'${option}' == 'Symbols'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_symbols}</arg>
+<arg>${WAIT}</arg>
+<arg>The Symbols checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.385689" elapsed="0.000035"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_symbols}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.385869" elapsed="0.000033"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Symbols</arg>
+<arg>False</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.386034" elapsed="0.000032"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.385535" elapsed="0.000595"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.297005" elapsed="0.089166"/>
+</if>
+<status status="PASS" start="2024-11-07T08:35:26.296847" elapsed="0.089354"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<arg>Cannot uncheck ${option} as there must be at least one requirement set.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.386361" elapsed="0.000032"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.386237" elapsed="0.000205"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.296828" elapsed="0.089650"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.386795" level="INFO">REQUIREMENT: {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'False'}</msg>
+<arg>REQUIREMENT: ${REQUIREMENTS}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.386587" elapsed="0.000269"/>
+</kw>
+<arg>${key}</arg>
+<doc>Check box of the selected option
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="PASS" start="2024-11-07T08:35:26.285206" elapsed="0.101743"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.284891" elapsed="0.102115"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.284203" elapsed="0.102843"/>
+</if>
+<var name="${key}">Numbers</var>
+<status status="PASS" start="2024-11-07T08:35:26.283768" elapsed="0.103306"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.387595" level="INFO">Symbols</msg>
+<arg>${key}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.387415" elapsed="0.000250"/>
+</kw>
+<if>
+<branch type="IF" condition="'${requirements}[${key}]' == '${True}'">
+<kw name="Set requirement" owner="pom_PasswordGenerator">
+<kw name="Check if password has" owner="pom_PasswordGenerator">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.390702" level="INFO">${isOption} = False</msg>
+<var>${isOption}</var>
+<arg>${REQUIREMENTS}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.390261" elapsed="0.000506"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.391223" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${isOption}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.391059" elapsed="0.000267"/>
+</kw>
+<msg time="2024-11-07T08:35:26.391593" level="INFO">${isRequirementSet} = False</msg>
+<var>${isRequirementSet}</var>
+<arg>${option}</arg>
+<doc>check password against the provided requirement</doc>
+<status status="PASS" start="2024-11-07T08:35:26.389566" elapsed="0.002083"/>
+</kw>
+<if>
+<branch type="IF" condition="${isRequirementSet} == False">
+<if>
+<branch type="IF" condition="'${option}' == 'Lowercase'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_lower_case}</arg>
+<arg>${WAIT}</arg>
+<arg>The Lowercase checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.392414" elapsed="0.000059"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_lower_case}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.392712" elapsed="0.000052"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Lowercase</arg>
+<arg>True</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.392975" elapsed="0.000051"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.392069" elapsed="0.001054"/>
+</branch>
+<branch type="ELSE IF" condition="'${option}' == 'Uppercase'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_upper_case}</arg>
+<arg>${WAIT}</arg>
+<arg>The Uppercase checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.393503" elapsed="0.000054"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_upper_case}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.393786" elapsed="0.000051"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Uppercase</arg>
+<arg>True</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.394042" elapsed="0.000051"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.393193" elapsed="0.001001"/>
+</branch>
+<branch type="ELSE IF" condition="'${option}' == 'Numbers'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_numbers}</arg>
+<arg>${WAIT}</arg>
+<arg>The Numbers checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.394488" elapsed="0.000035"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_numbers}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.394672" elapsed="0.000033"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Numbers</arg>
+<arg>True</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.394835" elapsed="0.000031"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.394263" elapsed="0.000657"/>
+</branch>
+<branch type="ELSE IF" condition="'${option}' == 'Symbols'">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_checkbox_has_symbols}</arg>
+<arg>${WAIT}</arg>
+<arg>The Symbols checkbox is not available.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.395174" elapsed="0.093162"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.489490" level="INFO">Clicking element 'xpath=//label[@for="option-symbols"]'.</msg>
+<arg>${loc_checkbox_has_symbols}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.488924" elapsed="0.047927"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${REQUIREMENTS}</arg>
+<arg>Symbols</arg>
+<arg>True</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.537218" elapsed="0.000335"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.394962" elapsed="0.142694"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.392042" elapsed="0.145684"/>
+</if>
+<status status="PASS" start="2024-11-07T08:35:26.391816" elapsed="0.145951"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<arg>Requirement ${option} has been already set</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.538125" elapsed="0.000054"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.537839" elapsed="0.000410"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.391781" elapsed="0.146510"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.538763" level="INFO">REQUIREMENT: {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'True'}</msg>
+<arg>REQUIREMENT: ${REQUIREMENTS}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.538470" elapsed="0.000374"/>
+</kw>
+<arg>${key}</arg>
+<doc>Check box of the selected option
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="PASS" start="2024-11-07T08:35:26.388709" elapsed="0.150280"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.387811" elapsed="0.151248"/>
+</branch>
+<branch type="ELSE">
+<kw name="Unset requirement" owner="pom_PasswordGenerator">
+<arg>${key}</arg>
+<doc>Check box of the selected option
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.539658" elapsed="0.000070"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.539135" elapsed="0.000669"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.387778" elapsed="0.152073"/>
+</if>
+<var name="${key}">Symbols</var>
+<status status="PASS" start="2024-11-07T08:35:26.387286" elapsed="0.152602"/>
+</iter>
+<var>${key}</var>
+<value>@{requirements}</value>
+<status status="PASS" start="2024-11-07T08:35:26.266251" elapsed="0.273695"/>
+</for>
+<doc>Rnadomly select a requirement from [{'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'True'}, {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'False'}, {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'True'}, {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'False'}, {'Lowercase': 'True', 'Uppercase': 'False', 'Numbers': 'True', 'Symbols': 'True'}, {'Lowercase': 'True', 'Uppercase': 'False', 'Numbers': 'True', 'Symbols': 'False'}, {'Lowercase': 'True', 'Uppercase': 'False', 'Numbers': 'False', 'Symbols': 'True'}, {'Lowercase': 'True', 'Uppercase': 'False', 'Numbers': 'False', 'Symbols': 'False'}, {'Lowercase': 'False', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'True'}, {'Lowercase': 'False', 'Uppercase': 'True', 'Numbers': 'True', 'Symbols': 'False'}, {'Lowercase': 'False', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'True'}, {'Lowercase': 'False', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'False'}, {'Lowercase': 'False', 'Uppercase': 'False', 'Numbers': 'True', 'Symbols': 'True'}, {'Lowercase': 'False', 'Uppercase': 'False', 'Numbers': 'True', 'Symbols': 'False'}, {'Lowercase': 'False', 'Uppercase': 'False', 'Numbers': 'False', 'Symbols': 'True'}, {'Lowercase': 'False', 'Uppercase': 'False', 'Numbers': 'False', 'Symbols': 'False'}] for Testing</doc>
+<status status="PASS" start="2024-11-07T08:35:26.265109" elapsed="0.274951"/>
+</kw>
+<kw name="Generate random password length" owner="pom_PasswordGenerator">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.541043" level="INFO">${random_length} = 8</msg>
+<var>${random_length}</var>
+<arg>random.randrange(6, 32)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.540736" elapsed="0.000345"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.541586" level="INFO">Executing JavaScript:
+document.getElementById("passwordLength").value = "";
+Without any arguments.</msg>
+<arg>document.getElementById("passwordLength").value = "";</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.541259" elapsed="0.005081"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.546910" level="INFO">Typing text '8' into text field 'css=#passwordLength'.</msg>
+<arg>${loc_input_password_length}</arg>
+<arg>${random_length}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.546588" elapsed="0.087859"/>
+</kw>
+<kw name="Check password length against the requirement" owner="pom_PasswordGenerator">
+<kw name="Retrieve generated password" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_input_display_password}</arg>
+<arg>${WAIT}</arg>
+<arg>The input field displaying password is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.635439" elapsed="0.012298"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.684226" level="INFO">${GENERATED_PASSWORD} = cH9&lt;2Y^2</msg>
+<var>${GENERATED_PASSWORD}</var>
+<arg>${loc_input_display_password}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.647996" elapsed="0.036285"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.684826" level="INFO">${GENERATED_PASSWORD} = cH9&lt;2Y^2</msg>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.684527" elapsed="0.000354"/>
+</kw>
+<doc>Retrieve the generated passwords displayed on the website</doc>
+<status status="PASS" start="2024-11-07T08:35:26.635143" elapsed="0.049843"/>
+</kw>
+<kw name="Get password length requirement" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_bar_password_length}</arg>
+<arg>${WAIT}</arg>
+<arg>The password length field is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.685540" elapsed="0.011914"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.709590" level="INFO">${REQ_PASSWORD_LENGTH} = 8</msg>
+<var>${REQ_PASSWORD_LENGTH}</var>
+<arg>${loc_bar_password_length}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.697714" elapsed="0.011929"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.710196" level="INFO">${REQ_PASSWORD_LENGTH} = 8</msg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.709880" elapsed="0.000372"/>
+</kw>
+<doc>Retrieve the password length set by users to make sure the generated passwords meet the requirments.
+Store the new length in the global variable 6 for easy access</doc>
+<status status="PASS" start="2024-11-07T08:35:26.685242" elapsed="0.025102"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.710755" level="INFO">Length is 8.</msg>
+<msg time="2024-11-07T08:35:26.710852" level="INFO">${generated_password_length} = 8</msg>
+<var>${generated_password_length}</var>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.710585" elapsed="0.000298"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.711243" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${generated_password_length}</arg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.711031" elapsed="0.000282"/>
+</kw>
+<doc>Test the passwords' lengths and make sure they meet requirements
+Arguments: input_length= value set by users</doc>
+<status status="PASS" start="2024-11-07T08:35:26.634764" elapsed="0.076647"/>
+</kw>
+<doc>Generate random length for the password. The length is between 6 and 32</doc>
+<status status="PASS" start="2024-11-07T08:35:26.540317" elapsed="0.171171"/>
+</kw>
+<kw name="Check password against requirements" owner="pom_PasswordGenerator">
+<kw name="Check password length against the requirement" owner="pom_PasswordGenerator">
+<kw name="Retrieve generated password" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_input_display_password}</arg>
+<arg>${WAIT}</arg>
+<arg>The input field displaying password is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.712609" elapsed="0.011818"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.733935" level="INFO">${GENERATED_PASSWORD} = cH9&lt;2Y^2</msg>
+<var>${GENERATED_PASSWORD}</var>
+<arg>${loc_input_display_password}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.724691" elapsed="0.009298"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.734533" level="INFO">${GENERATED_PASSWORD} = cH9&lt;2Y^2</msg>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.734233" elapsed="0.000356"/>
+</kw>
+<doc>Retrieve the generated passwords displayed on the website</doc>
+<status status="PASS" start="2024-11-07T08:35:26.712344" elapsed="0.022337"/>
+</kw>
+<kw name="Get password length requirement" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_bar_password_length}</arg>
+<arg>${WAIT}</arg>
+<arg>The password length field is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.735216" elapsed="0.011587"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.757822" level="INFO">${REQ_PASSWORD_LENGTH} = 8</msg>
+<var>${REQ_PASSWORD_LENGTH}</var>
+<arg>${loc_bar_password_length}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.747065" elapsed="0.010811"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.758439" level="INFO">${REQ_PASSWORD_LENGTH} = 8</msg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.758126" elapsed="0.000370"/>
+</kw>
+<doc>Retrieve the password length set by users to make sure the generated passwords meet the requirments.
+Store the new length in the global variable 8 for easy access</doc>
+<status status="PASS" start="2024-11-07T08:35:26.734920" elapsed="0.023673"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.758916" level="INFO">Length is 8.</msg>
+<msg time="2024-11-07T08:35:26.759009" level="INFO">${generated_password_length} = 8</msg>
+<var>${generated_password_length}</var>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.758751" elapsed="0.000289"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.759400" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${generated_password_length}</arg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.759199" elapsed="0.000271"/>
+</kw>
+<doc>Test the passwords' lengths and make sure they meet requirements
+Arguments: input_length= value set by users</doc>
+<status status="PASS" start="2024-11-07T08:35:26.712039" elapsed="0.047522"/>
+</kw>
+<kw name="Check if password meets requirement" owner="pom_PasswordGenerator">
+<kw name="Check password length against the requirement" owner="pom_PasswordGenerator">
+<kw name="Retrieve generated password" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_input_display_password}</arg>
+<arg>${WAIT}</arg>
+<arg>The input field displaying password is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.760727" elapsed="0.012466"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.783485" level="INFO">${GENERATED_PASSWORD} = cH9&lt;2Y^2</msg>
+<var>${GENERATED_PASSWORD}</var>
+<arg>${loc_input_display_password}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.773482" elapsed="0.010057"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.784097" level="INFO">${GENERATED_PASSWORD} = cH9&lt;2Y^2</msg>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.783778" elapsed="0.000388"/>
+</kw>
+<doc>Retrieve the generated passwords displayed on the website</doc>
+<status status="PASS" start="2024-11-07T08:35:26.760463" elapsed="0.023797"/>
+</kw>
+<kw name="Get password length requirement" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_bar_password_length}</arg>
+<arg>${WAIT}</arg>
+<arg>The password length field is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.784797" elapsed="0.011504"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.807591" level="INFO">${REQ_PASSWORD_LENGTH} = 8</msg>
+<var>${REQ_PASSWORD_LENGTH}</var>
+<arg>${loc_bar_password_length}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.796560" elapsed="0.011084"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.808219" level="INFO">${REQ_PASSWORD_LENGTH} = 8</msg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.807892" elapsed="0.000384"/>
+</kw>
+<doc>Retrieve the password length set by users to make sure the generated passwords meet the requirments.
+Store the new length in the global variable 8 for easy access</doc>
+<status status="PASS" start="2024-11-07T08:35:26.784503" elapsed="0.023865"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.808676" level="INFO">Length is 8.</msg>
+<msg time="2024-11-07T08:35:26.808853" level="INFO">${generated_password_length} = 8</msg>
+<var>${generated_password_length}</var>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.808514" elapsed="0.000377"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.809260" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${generated_password_length}</arg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.809045" elapsed="0.000284"/>
+</kw>
+<doc>Test the passwords' lengths and make sure they meet requirements
+Arguments: input_length= value set by users</doc>
+<status status="PASS" start="2024-11-07T08:35:26.760169" elapsed="0.049252"/>
+</kw>
+<kw name="Check if password has" owner="pom_PasswordGenerator">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.810195" level="INFO">${isOption} = True</msg>
+<var>${isOption}</var>
+<arg>${REQUIREMENTS}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.809956" elapsed="0.000272"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.810475" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${isOption}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.810384" elapsed="0.000151"/>
+</kw>
+<msg time="2024-11-07T08:35:26.810693" level="INFO">${isOption} = True</msg>
+<var>${isOption}</var>
+<arg>${option}</arg>
+<doc>check password against the provided requirement</doc>
+<status status="PASS" start="2024-11-07T08:35:26.809606" elapsed="0.001116"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.811112" level="INFO">${regex_option} = [a-z]</msg>
+<var>${regex_option}</var>
+<arg>${REGEX}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.810861" elapsed="0.000283"/>
+</kw>
+<if>
+<branch type="IF" condition="${isOption}">
+<kw name="Should Match Regexp" owner="BuiltIn">
+<arg>${GENERATED_PASSWORD}</arg>
+<arg>${regex_option}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.811458" elapsed="0.000216"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.811253" elapsed="0.000484"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Not Match Regexp" owner="BuiltIn">
+<arg>${GENERATED_PASSWORD}</arg>
+<arg>${regex_option}</arg>
+<doc>Fails if ``string`` matches ``pattern`` as a regular expression.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.811906" elapsed="0.000033"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.811781" elapsed="0.000227"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.811230" elapsed="0.000814"/>
+</if>
+<arg>Lowercase</arg>
+<doc>check password against the provided requirement. This includes length and whatever requirement set by users
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="PASS" start="2024-11-07T08:35:26.759814" elapsed="0.052286"/>
+</kw>
+<kw name="Check if password meets requirement" owner="pom_PasswordGenerator">
+<kw name="Check password length against the requirement" owner="pom_PasswordGenerator">
+<kw name="Retrieve generated password" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_input_display_password}</arg>
+<arg>${WAIT}</arg>
+<arg>The input field displaying password is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.813402" elapsed="0.013741"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.837543" level="INFO">${GENERATED_PASSWORD} = cH9&lt;2Y^2</msg>
+<var>${GENERATED_PASSWORD}</var>
+<arg>${loc_input_display_password}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.827401" elapsed="0.010201"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.838340" level="INFO">${GENERATED_PASSWORD} = cH9&lt;2Y^2</msg>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.837910" elapsed="0.000518"/>
+</kw>
+<doc>Retrieve the generated passwords displayed on the website</doc>
+<status status="PASS" start="2024-11-07T08:35:26.813132" elapsed="0.025464"/>
+</kw>
+<kw name="Get password length requirement" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_bar_password_length}</arg>
+<arg>${WAIT}</arg>
+<arg>The password length field is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.839324" elapsed="0.011790"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.861880" level="INFO">${REQ_PASSWORD_LENGTH} = 8</msg>
+<var>${REQ_PASSWORD_LENGTH}</var>
+<arg>${loc_bar_password_length}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.851374" elapsed="0.010558"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.862501" level="INFO">${REQ_PASSWORD_LENGTH} = 8</msg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.862181" elapsed="0.000376"/>
+</kw>
+<doc>Retrieve the password length set by users to make sure the generated passwords meet the requirments.
+Store the new length in the global variable 8 for easy access</doc>
+<status status="PASS" start="2024-11-07T08:35:26.838929" elapsed="0.023719"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.862967" level="INFO">Length is 8.</msg>
+<msg time="2024-11-07T08:35:26.863055" level="INFO">${generated_password_length} = 8</msg>
+<var>${generated_password_length}</var>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.862795" elapsed="0.000288"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.863431" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${generated_password_length}</arg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.863235" elapsed="0.000262"/>
+</kw>
+<doc>Test the passwords' lengths and make sure they meet requirements
+Arguments: input_length= value set by users</doc>
+<status status="PASS" start="2024-11-07T08:35:26.812683" elapsed="0.050900"/>
+</kw>
+<kw name="Check if password has" owner="pom_PasswordGenerator">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.864318" level="INFO">${isOption} = True</msg>
+<var>${isOption}</var>
+<arg>${REQUIREMENTS}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.864084" elapsed="0.000267"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.864595" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${isOption}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.864505" elapsed="0.000152"/>
+</kw>
+<msg time="2024-11-07T08:35:26.864813" level="INFO">${isOption} = True</msg>
+<var>${isOption}</var>
+<arg>${option}</arg>
+<doc>check password against the provided requirement</doc>
+<status status="PASS" start="2024-11-07T08:35:26.863760" elapsed="0.001133"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.865311" level="INFO">${regex_option} = [A-Z]</msg>
+<var>${regex_option}</var>
+<arg>${REGEX}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.865071" elapsed="0.000272"/>
+</kw>
+<if>
+<branch type="IF" condition="${isOption}">
+<kw name="Should Match Regexp" owner="BuiltIn">
+<arg>${GENERATED_PASSWORD}</arg>
+<arg>${regex_option}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.865661" elapsed="0.000205"/>
+</kw>
+<status status="PASS" start="2024-11-07T08:35:26.865450" elapsed="0.000477"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Not Match Regexp" owner="BuiltIn">
+<arg>${GENERATED_PASSWORD}</arg>
+<arg>${regex_option}</arg>
+<doc>Fails if ``string`` matches ``pattern`` as a regular expression.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.866089" elapsed="0.000036"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.865969" elapsed="0.000208"/>
+</branch>
+<status status="PASS" start="2024-11-07T08:35:26.865427" elapsed="0.000785"/>
+</if>
+<arg>Uppercase</arg>
+<doc>check password against the provided requirement. This includes length and whatever requirement set by users
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="PASS" start="2024-11-07T08:35:26.812345" elapsed="0.053924"/>
+</kw>
+<kw name="Check if password meets requirement" owner="pom_PasswordGenerator">
+<kw name="Check password length against the requirement" owner="pom_PasswordGenerator">
+<kw name="Retrieve generated password" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_input_display_password}</arg>
+<arg>${WAIT}</arg>
+<arg>The input field displaying password is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.867377" elapsed="0.013011"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.893499" level="INFO">${GENERATED_PASSWORD} = cH9&lt;2Y^2</msg>
+<var>${GENERATED_PASSWORD}</var>
+<arg>${loc_input_display_password}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.880662" elapsed="0.012892"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.894127" level="INFO">${GENERATED_PASSWORD} = cH9&lt;2Y^2</msg>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.893794" elapsed="0.000394"/>
+</kw>
+<doc>Retrieve the generated passwords displayed on the website</doc>
+<status status="PASS" start="2024-11-07T08:35:26.867109" elapsed="0.027175"/>
+</kw>
+<kw name="Get password length requirement" owner="pom_PasswordGenerator">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${loc_bar_password_length}</arg>
+<arg>${WAIT}</arg>
+<arg>The password length field is not visible.</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.894833" elapsed="0.013554"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2024-11-07T08:35:26.919550" level="INFO">${REQ_PASSWORD_LENGTH} = 8</msg>
+<var>${REQ_PASSWORD_LENGTH}</var>
+<arg>${loc_bar_password_length}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.908727" elapsed="0.010911"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.920292" level="INFO">${REQ_PASSWORD_LENGTH} = 8</msg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.919908" elapsed="0.000455"/>
+</kw>
+<doc>Retrieve the password length set by users to make sure the generated passwords meet the requirments.
+Store the new length in the global variable 8 for easy access</doc>
+<status status="PASS" start="2024-11-07T08:35:26.894531" elapsed="0.025941"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.920838" level="INFO">Length is 8.</msg>
+<msg time="2024-11-07T08:35:26.920938" level="INFO">${generated_password_length} = 8</msg>
+<var>${generated_password_length}</var>
+<arg>${GENERATED_PASSWORD}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.920653" elapsed="0.000315"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.921350" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${generated_password_length}</arg>
+<arg>${REQ_PASSWORD_LENGTH}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.921137" elapsed="0.000282"/>
+</kw>
+<doc>Test the passwords' lengths and make sure they meet requirements
+Arguments: input_length= value set by users</doc>
+<status status="PASS" start="2024-11-07T08:35:26.866820" elapsed="0.054691"/>
+</kw>
+<kw name="Check if password has" owner="pom_PasswordGenerator">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.922687" level="INFO">${isOption} = False</msg>
+<var>${isOption}</var>
+<arg>${REQUIREMENTS}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.922138" elapsed="0.000602"/>
+</kw>
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.923119" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>${isOption}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.922978" elapsed="0.000224"/>
+</kw>
+<msg time="2024-11-07T08:35:26.923411" level="INFO">${isOption} = False</msg>
+<var>${isOption}</var>
+<arg>${option}</arg>
+<doc>check password against the provided requirement</doc>
+<status status="PASS" start="2024-11-07T08:35:26.921713" elapsed="0.001730"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-11-07T08:35:26.924058" level="INFO">${regex_option} = [0-9]</msg>
+<var>${regex_option}</var>
+<arg>${REGEX}</arg>
+<arg>${option}</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.923670" elapsed="0.000453"/>
+</kw>
+<if>
+<branch type="IF" condition="${isOption}">
+<kw name="Should Match Regexp" owner="BuiltIn">
+<arg>${GENERATED_PASSWORD}</arg>
+<arg>${regex_option}</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.924620" elapsed="0.000042"/>
+</kw>
+<status status="NOT RUN" start="2024-11-07T08:35:26.924318" elapsed="0.000410"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Not Match Regexp" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.925364" level="FAIL">'cH9&lt;2Y^2' matches '[0-9]'</msg>
+<arg>${GENERATED_PASSWORD}</arg>
+<arg>${regex_option}</arg>
+<doc>Fails if ``string`` matches ``pattern`` as a regular expression.</doc>
+<status status="FAIL" start="2024-11-07T08:35:26.924929" elapsed="0.000530">'cH9&lt;2Y^2' matches '[0-9]'</status>
+</kw>
+<status status="FAIL" start="2024-11-07T08:35:26.924775" elapsed="0.000794">'cH9&lt;2Y^2' matches '[0-9]'</status>
+</branch>
+<status status="FAIL" start="2024-11-07T08:35:26.924273" elapsed="0.001347">'cH9&lt;2Y^2' matches '[0-9]'</status>
+</if>
+<arg>Numbers</arg>
+<doc>check password against the provided requirement. This includes length and whatever requirement set by users
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="FAIL" start="2024-11-07T08:35:26.866497" elapsed="0.059231">'cH9&lt;2Y^2' matches '[0-9]'</status>
+</kw>
+<kw name="Check if password meets requirement" owner="pom_PasswordGenerator">
+<arg>Symbols</arg>
+<doc>check password against the provided requirement. This includes length and whatever requirement set by users
+Arguments: option= the selected option (Lowercase, Uppsercase, Numbers, Symbols)</doc>
+<status status="NOT RUN" start="2024-11-07T08:35:26.926074" elapsed="0.000052"/>
+</kw>
+<doc>Check to see if the generated passwords meet all the set requirements</doc>
+<status status="FAIL" start="2024-11-07T08:35:26.711691" elapsed="0.214555">'cH9&lt;2Y^2' matches '[0-9]'</status>
+</kw>
+<var name="${counter}">0</var>
+<status status="FAIL" start="2024-11-07T08:35:26.264765" elapsed="0.661563">'cH9&lt;2Y^2' matches '[0-9]'</status>
+</iter>
+<var>${counter}</var>
+<value>0</value>
+<value>10</value>
+<status status="FAIL" start="2024-11-07T08:35:26.264593" elapsed="0.661820">'cH9&lt;2Y^2' matches '[0-9]'</status>
+</for>
+<kw name="End Web Test" owner="setup" type="TEARDOWN">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.927316" level="INFO">${PASSWORD_LENGTH} = 6</msg>
+<var>${PASSWORD_LENGTH}</var>
+<arg>6</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.927135" elapsed="0.000214"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.927747" level="INFO">${PASSWORD_LENGTH} = 6</msg>
+<arg>${PASSWORD_LENGTH}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.927511" elapsed="0.000291"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.928241" level="INFO">&amp;{REQUIREMENTS} = { Lowercase=True | Uppercase=True | Numbers=False | Symbols=False }</msg>
+<var>&amp;{REQUIREMENTS}</var>
+<arg>Lowercase=True</arg>
+<arg>Uppercase=True</arg>
+<arg>Numbers=False</arg>
+<arg>Symbols=False</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.927955" elapsed="0.000322"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2024-11-07T08:35:26.928672" level="INFO">${REQUIREMENTS} = {'Lowercase': 'True', 'Uppercase': 'True', 'Numbers': 'False', 'Symbols': 'False'}</msg>
+<arg>${REQUIREMENTS}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.928441" elapsed="0.000285"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-11-07T08:35:36.929298" level="INFO">Slept 10 seconds.</msg>
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.928867" elapsed="10.000584"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-11-07T08:35:36.929731" elapsed="0.082612"/>
+</kw>
+<doc>Test Teardown: Close the browser once all the test cases are run.</doc>
+<status status="PASS" start="2024-11-07T08:35:26.926794" elapsed="10.085810"/>
+</kw>
+<doc>Combine different password requirements to make sure all features work well altogether.</doc>
+<tag>current</tag>
+<status status="FAIL" start="2024-11-07T08:35:22.171352" elapsed="14.841458">'cH9&lt;2Y^2' matches '[0-9]'</status>
+</test>
+<status status="FAIL" start="2024-11-07T08:35:21.984932" elapsed="15.028781"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">current</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="PasswordGenerator">PasswordGenerator</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
