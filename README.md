@@ -62,7 +62,13 @@ This folder contains all the neccessary resources for the automation scripts to 
     - `pom_BasePage.robot:` contains all global variables used for the automation
     - `pom_PasswordGenerator.robot:` contains all variables, locators, keywords used for automating test suites on page Password Generator.
 
+### Scripts
+Contains automation test scripts and includes `results` folder and the main Test Suite `PasswordGenerator.robot`
 
+- **`results:`** the folder in which output of automation tests will be stored.
+- `**PasswordGenerator.robot:** The main Automation Test Suite which contains multiple Test cases. There are total
+
+-----
 ## Challenges/Issues
 1. When clicking the copy icon, the text is copied to the clipboard!. However, when trying to access the clipboard, I got a pop-up asking for permissions. Due to security reasons, automating granting the permission is not viable through Robot Framework. So I had to do a workaround, running Python to independtly get the content of the clipboard.
 
