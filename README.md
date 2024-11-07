@@ -4,6 +4,7 @@
 
 ## Objective: 
 Create an automation test suite to test all the functionalities of the Password Generator feature.
+
 URL: https://www.security.org/password-generator/
 
 ## Set up
