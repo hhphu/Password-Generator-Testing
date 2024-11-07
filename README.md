@@ -51,6 +51,9 @@ robot -d results --include $TAG $TESTSUITE_NAME
 ```
 
 ## Structures
+There will be two main folders: **Resources** & **Scripts**
+
+### Resources
 
 
 ## Challenges/Issues
