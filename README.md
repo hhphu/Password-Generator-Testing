@@ -1,4 +1,4 @@
-# Test plan for Password Generator
+# Password Generator Test Plan
 
 ![image](https://github.com/user-attachments/assets/e7269550-daa1-4661-a5d1-146784e4961f)
 
