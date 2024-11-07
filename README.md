@@ -54,6 +54,13 @@ robot -d results --include $TAG $TESTSUITE_NAME
 There will be two main folders: **Resources** & **Scripts**
 
 ### Resources
+This folder contains all the neccessary resources for the automation scripts to run. Within this folder, there is another folder **`POM`** and two robot files **`main.robot`** & **`setup.robot`**.
+
+- **`main.robot:`** the main resource files that import all other resources required for the automation.
+- **`setup.robot`** contains Test Setup and Test Teardown for the automation
+- **`POM (Page Object Model):`** Includes two robot files: `pom_BasePage.robot` and `pom_PasswordGenerator.robot`
+    - `pom_BasePage.robot:` contains all global variables used for the automation
+    - `pom_PasswordGenerator.robot:` contains all variables, locators, keywords used for automating test suites on page Password Generator.
 
 
 ## Challenges/Issues
