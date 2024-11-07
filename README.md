@@ -66,7 +66,7 @@ This folder contains all the neccessary resources for the automation scripts to 
 Contains automation test scripts and includes `results` folder and the main Test Suite `PasswordGenerator.robot`
 
 - **`results:`** the folder in which output of automation tests will be stored.
-- `**PasswordGenerator.robot:** The main Automation Test Suite which contains multiple Test cases. There are total
+- **`PasswordGenerator.robot:`** The main Automation Test Suite which contains multiple Test cases. There are total 9 Test cases that cover all functionalies, input validation, edge cases of the features on the Password Generator page. A few edge cases to be considered are password lengths' being out of range (either less than 6 or greater than 32) or no options is selected to generate passwords.
 
 -----
 ## Challenges/Issues
