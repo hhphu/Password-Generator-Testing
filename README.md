@@ -5,6 +5,8 @@
 ## Objective: 
 Create an automation test suite to test all the functionalities of the Password Generator feature.
 
+Tools: Python, Selenium, Robot Framework
+
 URL: https://www.security.org/password-generator/
 
 ## Set up
